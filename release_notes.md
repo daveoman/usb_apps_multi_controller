@@ -5,6 +5,20 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Harmony 3 USB Multi-Controller application examples v3.7.1
+
+**New Features**
+
+- Update MPLAB X project configuration to remove -Werror option.
+
+**Known Issues**
+
+-  Same as v3.7.0
+
+**Development Tools**
+
+-   Same as v3.7.0
+
 ## Harmony 3 USB Multi-Controller application examples v3.7.0
 
 ### Development kit and demo application support
