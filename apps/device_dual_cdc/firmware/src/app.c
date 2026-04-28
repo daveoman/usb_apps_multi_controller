@@ -471,7 +471,7 @@ void APP_Initialize ( void )
     appData.state = APP_STATE_INIT;
     
     __InitializeDeviceObject(0); 
-    __InitializeDeviceObject(1);      
+    //__InitializeDeviceObject(1);      
 }
 
 
@@ -498,25 +498,25 @@ void APP_Tasks (void )
             {
                 appData.deviceObject[0].deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_0, DRV_IO_INTENT_READWRITE );
             }
-            if(appData.deviceObject[1].deviceHandle == USB_DEVICE_HANDLE_INVALID)
-            {
-				appData.deviceObject[1].deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_1, DRV_IO_INTENT_READWRITE );
-            }
+            //if(appData.deviceObject[1].deviceHandle == USB_DEVICE_HANDLE_INVALID)
+            //{
+		//		appData.deviceObject[1].deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_1, DRV_IO_INTENT_READWRITE );
+            //}
             
-           if((appData.deviceObject[0].deviceHandle != USB_DEVICE_HANDLE_INVALID) 
-                && 
-                    (appData.deviceObject[1].deviceHandle != USB_DEVICE_HANDLE_INVALID))
+           if((appData.deviceObject[0].deviceHandle != USB_DEVICE_HANDLE_INVALID)) 
+                //&& 
+                  //  (appData.deviceObject[1].deviceHandle != USB_DEVICE_HANDLE_INVALID))
             {
                 /* Register a callback with device layer to get event notification (for end point 0) */
                 USB_DEVICE_EventHandlerSet(appData.deviceObject[0].deviceHandle, APP_USBDeviceEventHandler, (uintptr_t)&appData.deviceObject[0]);
                 
                 /* Register a callback with device layer to get event notification (for end point 0) */
-                USB_DEVICE_EventHandlerSet(appData.deviceObject[1].deviceHandle, APP_USBDeviceEventHandler,(uintptr_t)&appData.deviceObject[1]);
+                //USB_DEVICE_EventHandlerSet(appData.deviceObject[1].deviceHandle, APP_USBDeviceEventHandler,(uintptr_t)&appData.deviceObject[1]);
                 
                
                 appData.state = APP_STATE_RUN; 
                 appData.deviceObject[0].state = APP_STATE_WAIT_FOR_CONFIGURATION;
-                appData.deviceObject[1].state = APP_STATE_WAIT_FOR_CONFIGURATION;
+                //appData.deviceObject[1].state = APP_STATE_WAIT_FOR_CONFIGURATION;
                 USBAPP_LOG_INFO("Handles acquired moving to config wait");
                 
             }
@@ -530,7 +530,7 @@ void APP_Tasks (void )
         case APP_STATE_RUN:
              
              _AppTaskUsbDevice(&appData.deviceObject[0]);
-             _AppTaskUsbDevice(&appData.deviceObject[1]);
+             //_AppTaskUsbDevice(&appData.deviceObject[1]);
             break; 
         case APP_STATE_ERROR:
             break;

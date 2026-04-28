@@ -65,7 +65,6 @@ void DRV_USBFSV1_OTHER_Handler (void);
 void DRV_USBFSV1_SOF_HSOF_Handler (void);
 void DRV_USBFSV1_TRCPT0_Handler (void);
 void DRV_USBFSV1_TRCPT1_Handler (void);
-void DRV_USBHS_Handler (void);
 
 
 

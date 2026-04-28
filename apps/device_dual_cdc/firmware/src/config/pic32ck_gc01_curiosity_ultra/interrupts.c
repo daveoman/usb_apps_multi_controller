@@ -79,7 +79,7 @@ void __attribute__((optimize("-O1"), long_call, noreturn, used))Dummy_Handler(vo
 }
 
 /* MISRAC 2012 deviation block start */
-/* MISRA C-2012 Rule 8.6 deviated 154 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
+/* MISRA C-2012 Rule 8.6 deviated 155 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 /* Device vectors list dummy definition*/
 extern void MemoryManagement_Handler   ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void BusFault_Handler           ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -232,6 +232,7 @@ extern void SQI_Handler                ( void ) __attribute__((weak, alias("Dumm
 extern void TRNG_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SDMMC0_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SDMMC1_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
+extern void USBHS_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void HSM_ERROR_Handler          ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void HSM_TXINT_Handler          ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void HSM_RXINT_Handler          ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -248,7 +249,6 @@ const H3DeviceVectors exception_table=
 {
     /* Configure Initial Stack Pointer, using linker-generated symbols */
     .pvStack = &_stack,
-
 
 
     .pfnReset_Handler              = Reset_Handler,
@@ -416,7 +416,7 @@ const H3DeviceVectors exception_table=
     .pfnUSB_SOF_Handler            = DRV_USBFSV1_SOF_HSOF_Handler,
     .pfnUSB_TRCPT0_Handler         = DRV_USBFSV1_TRCPT0_Handler,
     .pfnUSB_TRCPT1_Handler         = DRV_USBFSV1_TRCPT1_Handler,
-    .pfnUSBHS_Handler              = DRV_USBHS_Handler,
+    .pfnUSBHS_Handler              = USBHS_Handler,
     .pfnHSM_ERROR_Handler          = HSM_ERROR_Handler,
     .pfnHSM_TXINT_Handler          = HSM_TXINT_Handler,
     .pfnHSM_RXINT_Handler          = HSM_RXINT_Handler,

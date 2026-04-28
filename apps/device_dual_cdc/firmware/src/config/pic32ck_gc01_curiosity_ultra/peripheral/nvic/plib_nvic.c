@@ -81,8 +81,6 @@ void NVIC_Initialize( void )
     NVIC_EnableIRQ(USB_TRCPT0_IRQn);
     NVIC_SetPriority(USB_TRCPT1_IRQn, 7);
     NVIC_EnableIRQ(USB_TRCPT1_IRQn);
-    NVIC_SetPriority(USBHS_IRQn, 7);
-    NVIC_EnableIRQ(USBHS_IRQn);
 
 
 

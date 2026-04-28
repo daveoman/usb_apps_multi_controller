@@ -133,33 +133,10 @@ extern "C" {
 #define DRV_USBFSV1_DUAL_BANK_ENABLE                        false
 
 #define DRV_USBFSV1_ENDPOINTS_NUMBER                        3U
-
-
-/*** USB Driver Configuration ***/
-
-/* Maximum USB driver instances */
-#define DRV_USBHS_INSTANCES_NUMBER                        1U
-
-/* Interrupt mode enabled */
-#define DRV_USBHS_INTERRUPT_MODE                          true
-
-
-/* Enables Device Support */
-#define DRV_USBHS_DEVICE_SUPPORT                          true
-
-/* Disable Host Support */
-#define DRV_USBHS_HOST_SUPPORT                            false
-
-
-
-
-#define DRV_USBHS_ENDPOINTS_NUMBER                        3U
-
 /* Alignment for buffers that are submitted to USB Driver*/ 
-#define USB_ALIGN  CACHE_ALIGN  __ALIGNED(16)
+#define USB_ALIGN  __ALIGNED(CACHE_LINE_SIZE)
 
-
-#define USB_DEVICE_INSTANCES_NUMBER                         2U
+#define USB_DEVICE_INSTANCES_NUMBER                         1U
 
 /* EP0 size in bytes */
 #define USB_DEVICE_EP0_BUFFER_SIZE                          64U
@@ -172,13 +149,13 @@ extern "C" {
 
 
 /* Maximum instances of CDC function driver */
-#define USB_DEVICE_CDC_INSTANCES_NUMBER                     2U
+#define USB_DEVICE_CDC_INSTANCES_NUMBER                     1U
 
 
 /* CDC Transfer Queue Size for both read and
    write. Applicable to all instances of the
    function driver */
-#define USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED                 6U
+#define USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED                 3U
 
 
 

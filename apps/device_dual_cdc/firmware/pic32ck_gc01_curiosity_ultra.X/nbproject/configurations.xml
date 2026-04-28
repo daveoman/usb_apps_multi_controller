@@ -20,41 +20,6 @@
                 </logicalFolder>
                 <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbfsv1/drv_usbfsv1.h</itemPath>
               </logicalFolder>
-              <logicalFolder name="usbhs" displayName="usbhs" projectFiles="true">
-                <logicalFolder name="src" displayName="src" projectFiles="true">
-                  <logicalFolder name="templates" displayName="templates" projectFiles="true">
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_HighSpeedSupport_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_ClockResetControl_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_SoftReset_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_ModuleControl_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_Interrupts_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EndpointOperations_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_ModuleControl_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EP0Status_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EndpointFIFO_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_registers.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_RxEPStatus_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_ClockResetControl_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_RxEPStatus_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_TxEPStatus_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_Interrupts_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EP0Status_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EndpointOperations_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_USBIDControl_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_SoftReset_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_EndpointFIFO_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_USBIDControl_Default.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_TxEPStatus_Unsupported.h</itemPath>
-                    <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/templates/usbhs_HighSpeedSupport_Unsupported.h</itemPath>
-                  </logicalFolder>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/plib_usbhs.h</itemPath>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/drv_usbhs_variant_mapping.h</itemPath>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/usbhs_registers.h</itemPath>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/plib_usbhs_header.h</itemPath>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/drv_usbhs_local.h</itemPath>
-                </logicalFolder>
-                <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/drv_usbhs.h</itemPath>
-              </logicalFolder>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/drv_usb.h</itemPath>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/drv_usb_external_dependencies.h</itemPath>
             </logicalFolder>
@@ -321,12 +286,6 @@
                   <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbfsv1/src/drv_usbfsv1.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
-              <logicalFolder name="usbhs" displayName="usbhs" projectFiles="true">
-                <logicalFolder name="src" displayName="src" projectFiles="true">
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/drv_usbhs_device.c</itemPath>
-                  <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/driver/usb/usbhs/src/drv_usbhs.c</itemPath>
-                </logicalFolder>
-              </logicalFolder>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
@@ -389,7 +348,6 @@
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/initialization.c</itemPath>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/exceptions.c</itemPath>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/tasks.c</itemPath>
-          <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb_device_init_data_1.c</itemPath>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/startup_xc32.c</itemPath>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/interrupts.c</itemPath>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb_device_init_data_0.c</itemPath>
@@ -678,6 +636,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-63ffffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/dmoor/MPLABXProjects/usb_apps_multi_controller/apps/device_dual_cdc/firmware/pic32ck_gc01_curiosity_ultra.X/debug/pic32ck_gc01_curiosity_ultra/pic32ck_gc01_curiosity_ultra_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

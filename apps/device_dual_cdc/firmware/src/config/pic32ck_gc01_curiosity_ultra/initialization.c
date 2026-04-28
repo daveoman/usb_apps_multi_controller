@@ -418,38 +418,6 @@ static const DRV_USBFSV1_INIT drvUSBFSInit =
 };
 
 
-/******************************************************
- * USB Driver Initialization
- ******************************************************/
-
-static const DRV_USBHS_INIT drvUSBInit =
-{
-    /* Interrupt Source for USBHS module */
-    .interruptSource = USBHS_IRQn,
-
-    /* Interrupt Source for USBHS module DMA */
-    .interruptSourceUSBDma = USBHS_IRQn,
-    /* System module initialization */
-    .moduleInit = {0},
-
-    /* USB Controller to operate as USB Device */
-    .operationMode = DRV_USBHS_OPMODE_DEVICE,
-
-    /* Enable High Speed Operation */
-    .operationSpeed = USB_SPEED_HIGH,
-    
-    /* Stop in idle */
-    .stopInIdle = true,
-
-    /* Suspend in sleep */
-    .suspendInSleep = false,
-
-    /* Identifies peripheral (PLIB-level) ID */
-    .usbID = USBHS_ID_0,
-
-};
-
-
 
 
 // *****************************************************************************
@@ -582,14 +550,6 @@ void SYS_Initialize ( void* data )
 
     /* Initialize USB Driver */ 
     sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBFSInit);
-
-
-    /* Initialize the USB device layer */
-    sysObj.usbDevObject1 = USB_DEVICE_Initialize (USB_DEVICE_INDEX_1 , ( SYS_MODULE_INIT* ) & usbDevInitData1);
-
-
-    /* Initialize USB Driver */ 
-    sysObj.drvUSBHSObject = DRV_USBHS_Initialize(DRV_USBHS_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);    
 
 
     /* Initialize the USB device layer */

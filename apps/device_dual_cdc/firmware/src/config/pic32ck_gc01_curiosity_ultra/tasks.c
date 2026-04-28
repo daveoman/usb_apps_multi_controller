@@ -84,12 +84,6 @@ void SYS_Tasks ( void )
     DRV_USBFSV1_Tasks(sysObj.drvUSBFSV1Object);
 
     /* USB Device layer tasks routine */ 
-    USB_DEVICE_Tasks(sysObj.usbDevObject1);
-
-    /* USBHS Driver Task Routine */ 
-    DRV_USBHS_Tasks(sysObj.drvUSBHSObject);
-
-    /* USB Device layer tasks routine */ 
     USB_DEVICE_Tasks(sysObj.usbDevObject0);
 
 

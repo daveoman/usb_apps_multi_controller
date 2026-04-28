@@ -49,9 +49,6 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "driver/usb/usbfsv1/drv_usbfsv1.h"
-#include "usb/usb_chapter_9.h"
-#include "usb/usb_device.h"
-#include "driver/usb/usbhs/drv_usbhs.h"
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
@@ -205,10 +202,6 @@ typedef struct
 {
     SYS_MODULE_OBJ  drvUSBFSV1Object;
 
-    SYS_MODULE_OBJ  usbDevObject1;
-
-    SYS_MODULE_OBJ  drvUSBHSObject;
-
     SYS_MODULE_OBJ  usbDevObject0;
 
     SYS_MODULE_OBJ  sysTime;
@@ -224,8 +217,6 @@ typedef struct
 // Section: extern declarations
 // *****************************************************************************
 // *****************************************************************************
-
-extern const USB_DEVICE_INIT usbDevInitData1; 
 
 extern const USB_DEVICE_INIT usbDevInitData0; 
 
