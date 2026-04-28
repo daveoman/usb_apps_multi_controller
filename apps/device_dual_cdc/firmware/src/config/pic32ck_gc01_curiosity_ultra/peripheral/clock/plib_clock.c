@@ -125,6 +125,13 @@ void CLOCK_Initialize (void)
     GCLK1_Initialize();
 
 
+    /* Selection of the Generator and write Lock for SERCOM5_CORE */
+    GCLK_REGS->GCLK_PCHCTRL[26] = GCLK_PCHCTRL_GEN(0x1)  | GCLK_PCHCTRL_CHEN_Msk;
+
+    while ((GCLK_REGS->GCLK_PCHCTRL[26] & GCLK_PCHCTRL_CHEN_Msk) != GCLK_PCHCTRL_CHEN_Msk)
+    {
+        /* Wait for synchronization */
+    }
     /* Selection of the Generator and write Lock for USB */
     GCLK_REGS->GCLK_PCHCTRL[46] = GCLK_PCHCTRL_GEN(0x1)  | GCLK_PCHCTRL_CHEN_Msk;
 

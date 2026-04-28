@@ -55,6 +55,19 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include "app.h"
 
+#ifndef USBAPP_DEBUG
+#define USBAPP_DEBUG 1
+#endif
+
+#if USBAPP_DEBUG
+#define USBAPP_LOG_INFO(fmt, ...) \
+    SYS_DEBUG_PRINT(SYS_ERROR_INFO, "USBAPP: " fmt "\r\n", ##__VA_ARGS__)
+#define USBAPP_LOG_ERR(fmt, ...) \
+    SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "USBAPP: " fmt "\r\n", ##__VA_ARGS__)
+#else
+#define USBAPP_LOG_INFO(...) do {} while (0)
+#define USBAPP_LOG_ERR(...)  do {} while (0)
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -201,6 +214,9 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
     return USB_DEVICE_CDC_EVENT_RESPONSE_NONE;
 }
 
+USB_DEVICE_EVENT eventLog[20] = {0};
+int eventLogIndex = 0;
+
 /***********************************************
  * Application USB Device Layer Event Handler.
  ***********************************************/
@@ -208,6 +224,13 @@ void APP_USBDeviceEventHandler ( USB_DEVICE_EVENT event, void * eventData, uintp
 {
     USB_DEVICE_EVENT_DATA_CONFIGURED *configuredEventData;
     APP_USB_DEVICE_OBJECT* appUsbDeviceObject = (APP_USB_DEVICE_OBJECT*)context; 
+    
+    if (eventLogIndex < sizeof(eventLog))
+        eventLog[eventLogIndex++] = event;
+    
+    if (event != USB_DEVICE_EVENT_SOF) 
+        USBAPP_LOG_INFO("Event %d", (int) event);
+    
     switch ( event )
     {
         case USB_DEVICE_EVENT_SOF:
@@ -431,6 +454,8 @@ void __InitializeDeviceObject(uint8_t index)
 
     /* Set up the read buffer */
     appData.deviceObject[index].comObject.readBuffer = &readBuffer[index][0];
+    
+    USBAPP_LOG_INFO("Init instance %d", index);
 }
 /*******************************************************************************
   Function:
@@ -492,6 +517,7 @@ void APP_Tasks (void )
                 appData.state = APP_STATE_RUN; 
                 appData.deviceObject[0].state = APP_STATE_WAIT_FOR_CONFIGURATION;
                 appData.deviceObject[1].state = APP_STATE_WAIT_FOR_CONFIGURATION;
+                USBAPP_LOG_INFO("Handles acquired moving to config wait");
                 
             }
             else

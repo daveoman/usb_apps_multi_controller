@@ -1,22 +1,22 @@
 /*******************************************************************************
- System Interrupts File
+  Debug System Service Local Data Structures
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    interrupt.h
+    sys_debug_local.h
 
   Summary:
-    Interrupt vectors mapping
+    Debug System Service local declarations and definitions.
 
   Description:
-    This file contains declarations of device vectors used by Harmony 3
- *******************************************************************************/
+    This file contains the Debug System Service local declarations and definitions.
+*******************************************************************************/
 
-// DOM-IGNORE-BEGIN
+//DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2025 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -36,37 +36,60 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
+//DOM-IGNORE-END
+
+#ifndef SYS_DEBUG_LOCAL_H
+#define SYS_DEBUG_LOCAL_H
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: File includes
+// *****************************************************************************
+// *****************************************************************************
+
+#include "configuration.h"
+#include "driver/driver.h"
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    extern "C" {
+
+#endif
 // DOM-IGNORE-END
 
-#ifndef INTERRUPTS_H
-#define INTERRUPTS_H
+// *****************************************************************************
+// *****************************************************************************
+// Section: Data Type Definitions
+// *****************************************************************************
+// *****************************************************************************
 
 // *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-#include <stdint.h>
+/* SYS DEBUG OBJECT INSTANCE structure
 
+  Summary:
+    System Debug object instance structure.
 
+  Description:
+    This data type defines the System Debug object instance.
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Handler Routines
-// *****************************************************************************
-// *****************************************************************************
-void Reset_Handler (void);
-void NonMaskableInt_Handler (void);
-void HardFault_Handler (void);
-void RTC_InterruptHandler (void);
-void SERCOM5_USART_InterruptHandler (void);
-void DRV_USBFSV1_OTHER_Handler (void);
-void DRV_USBFSV1_SOF_HSOF_Handler (void);
-void DRV_USBFSV1_TRCPT0_Handler (void);
-void DRV_USBFSV1_TRCPT1_Handler (void);
-void DRV_USBHS_Handler (void);
+  Remarks:
+    None.
+*/
 
+typedef struct
+{
+    SYS_STATUS                        status;
+    SYS_MODULE_INDEX                  debugConsole;
+} SYS_DEBUG_INSTANCE;
 
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
 
-#endif // INTERRUPTS_H
+    }
+
+#endif
+//DOM-IGNORE-END
+
+#endif //#ifndef SYS_DEBUG_LOCAL_H

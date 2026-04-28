@@ -12,8 +12,8 @@ Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,O
 14,PA15,,Available,,,,,,No,FAST
 15,PA16,,Available,,,,,,No,FAST
 16,PA17,,Available,,,,,,No,FAST
-17,PA24,,Available,,,,,,No,FAST
-20,PA25,,Available,,,,,,No,FAST
+17,PA24,,SERCOM5_PAD0,Digital,High Impedance,n/a,No,No,No,FAST
+20,PA25,,SERCOM5_PAD1,Digital,High Impedance,n/a,No,No,No,FAST
 21,PA26,,Available,,,,,,No,FAST
 22,PA27,,Available,,,,,,No,FAST
 23,PA04,,Available,,,,,,No,FAST

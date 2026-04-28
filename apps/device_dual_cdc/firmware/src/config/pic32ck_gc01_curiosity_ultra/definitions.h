@@ -14,7 +14,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2025 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -58,6 +58,7 @@
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/cmcc/plib_cmcc.h"
 #include "peripheral/pm/plib_pm.h"
+#include "peripheral/sercom/usart/plib_sercom5_usart.h"
 #include "usb/usb_chapter_9.h"
 #include "usb/usb_device.h"
 #include "peripheral/rtc/plib_rtc.h"
@@ -65,6 +66,8 @@
 #include "usb/usb_device_cdc.h"
 #include "usb/usb_cdc.h"
 #include "bsp/bsp.h"
+#include "system/console/sys_console.h"
+#include "system/console/src/sys_console_uart_definitions.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
@@ -209,6 +212,10 @@ typedef struct
     SYS_MODULE_OBJ  usbDevObject0;
 
     SYS_MODULE_OBJ  sysTime;
+    SYS_MODULE_OBJ  sysDebug;
+
+    SYS_MODULE_OBJ  sysConsole0;
+
 
 } SYSTEM_OBJECTS;
 
