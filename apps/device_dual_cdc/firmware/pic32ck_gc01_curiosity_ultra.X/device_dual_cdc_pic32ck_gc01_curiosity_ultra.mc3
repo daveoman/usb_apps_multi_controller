@@ -66,11 +66,11 @@
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
       <entry>
-         <string>usb_device_cdc</string>
+         <string>usb_device_vendor</string>
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
       <entry>
-         <string>usb_device_cdc_0</string>
+         <string>usb_device_vendor_0</string>
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
    </usedClasses>
@@ -3292,11 +3292,11 @@
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;pm&quot; x=&quot;8&quot; y=&quot;107&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;rtc&quot; x=&quot;8&quot; y=&quot;171&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;sercom5&quot; x=&quot;491&quot; y=&quot;158&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sys_console&quot; x=&quot;639&quot; y=&quot;94&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sys_console&quot; x=&quot;636&quot; y=&quot;145&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sys_debug&quot; x=&quot;809&quot; y=&quot;150&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_time&quot; x=&quot;157&quot; y=&quot;161&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;usb_device&quot; x=&quot;220&quot; y=&quot;300&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;usb_device_cdc&quot; x=&quot;408&quot; y=&quot;320&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;usb_device_vendor&quot; x=&quot;379&quot; y=&quot;297&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
   &lt;/UserData&gt;
@@ -10355,7 +10355,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_CONFIG_DESCRPTR_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;67&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;32&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10377,7 +10377,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_ENDPOINTS_NUMBER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;2&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10387,7 +10387,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_0" name="CONFIG_USB_DEVICE_ENDPOINT_READ_QUEUE_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_ENDPOINT_READ_QUEUE_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
 </value>
@@ -10396,7 +10398,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_0" name="CONFIG_USB_DEVICE_ENDPOINT_WRITE_QUEUE_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_ENDPOINT_WRITE_QUEUE_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
 </value>
@@ -10417,7 +10421,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_INTERFACES_NUMBER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;2&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10457,7 +10461,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_PRODUCT_ID_IDX0&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;0x000A&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;0x0053&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10468,7 +10472,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_PRODUCT_ID_SELECTION_IDX0&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;cdc_com_port_single_demo&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;vendor_demo&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10479,7 +10483,8 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_0&gt;
   &lt;usb_device_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_PRODUCT_STRING_DESCRIPTOR&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;Simple CDC Device Demo&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_0&quot; value=&quot;Simple WinUSB Device Demo&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;Simple Vendor demo&quot;/&gt;
     &lt;/Values&gt;
   &lt;/usb_device_0&gt;
 &lt;/usb_device_0&gt;
@@ -10598,35 +10603,35 @@
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc" name="#&amp;__MCC_Group_Parrent_id"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor" name="#&amp;__MCC_Group_Parrent_id"/>
          <value>__ROOTVIEW</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc" name="CONFIG_USB_DEVICE_CDC_INSTANCES"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc&gt;
-  &lt;usb_device_cdc dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_CDC_INSTANCES&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor" name="CONFIG_USB_DEVICE_VENDOR_INSTANCES"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor&gt;
+  &lt;usb_device_vendor dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_VENDOR_INSTANCES&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc&quot; value=&quot;1&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_vendor&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
-  &lt;/usb_device_cdc&gt;
-&lt;/usb_device_cdc&gt;
+  &lt;/usb_device_vendor&gt;
+&lt;/usb_device_vendor&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc" name="CONFIG_USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc&gt;
-  &lt;usb_device_cdc dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor" name="CONFIG_USB_DEVICE_VENDOR_QUEUE_DEPTH_COMBINED"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor&gt;
+  &lt;usb_device_vendor dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_VENDOR_QUEUE_DEPTH_COMBINED&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc&quot; value=&quot;12&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_vendor&quot; value=&quot;4&quot;/&gt;
     &lt;/Values&gt;
-  &lt;/usb_device_cdc&gt;
-&lt;/usb_device_cdc&gt;
+  &lt;/usb_device_vendor&gt;
+&lt;/usb_device_vendor&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="!@#harmonyAttachmentState"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="!@#harmonyAttachmentState"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot;&gt;
     &lt;Attachments dnOrder=&quot;0&quot;&gt;
       &lt;DirectDependency dnOrder=&quot;0&quot; id=&quot;usb_device_dependency&quot;&gt;
         &lt;Attributes dnOrder=&quot;0&quot;&gt;
@@ -10639,204 +10644,164 @@
         &lt;/Attributes&gt;
       &lt;/DirectDependency&gt;
     &lt;/Attachments&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="#&amp;__MCC_Group_Parrent_id"/>
-         <value>usb_device_cdc</value>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="#&amp;__MCC_Group_Parrent_id"/>
+         <value>usb_device_vendor</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_CDC_BUFFER_POOL"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_CDC_BUFFER_POOL&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_BULK_IN_ENDPOINT_NUMBER"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_BULK_IN_ENDPOINT_NUMBER&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_BULK_IN_ENDPOINT_NUMBER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_BULK_IN_ENDPOINT_NUMBER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc_0&quot; value=&quot;2&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_vendor_0&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_BULK_OUT_ENDPOINT_NUMBER"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_BULK_OUT_ENDPOINT_NUMBER&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_BULK_OUT_ENDPOINT_NUMBER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_BULK_OUT_ENDPOINT_NUMBER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc_0&quot; value=&quot;2&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_vendor_0&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_CONFIG_VALUE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_CONFIG_VALUE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_CONFIG_VALUE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_CONFIG_VALUE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_INDEX"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_INDEX&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_INDEX"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_INDEX&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_INTERFACE_NUMBER"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_INTERFACE_NUMBER&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_INTERFACE_NUMBER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_INTERFACE_NUMBER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc_0&quot; value=&quot;0&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_vendor_0&quot; value=&quot;0&quot;/&gt;
     &lt;/Values&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_INT_ENDPOINT_NUMBER"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_INT_ENDPOINT_NUMBER&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc_0&quot; value=&quot;1&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_NUMBER_OF_INTERFACES"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_NUMBER_OF_INTERFACES&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_NUMBER_OF_INTERFACES"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_NUMBER_OF_INTERFACES&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_SERIAL_NOTIFIACATION_Q_SIZE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_SERIAL_NOTIFIACATION_Q_SIZE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_USE_IAD"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_USE_IAD&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_VENDOR_BUFFER_POOL"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_VENDOR_BUFFER_POOL&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_USE_IAD_PREVIOUS_STATE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_USE_IAD_PREVIOUS_STATE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;usb_device_cdc_0&quot; value=&quot;false&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="USB_DEVICE_CDC_DESCRIPTOR_CLASS_CODE_FILE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_CDC_DESCRIPTOR_CLASS_CODE_FILE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="USB_DEVICE_VENDOR_DESCRIPTOR_CLASS_CODE_FILE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_VENDOR_DESCRIPTOR_CLASS_CODE_FILE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;String dnOrder=&quot;0&quot; id=&quot;name&quot;&gt;
         &lt;Value dnOrder=&quot;0&quot;&gt;usb_device_0.LIST_USB_DEVICE_DESCRIPTOR_CLASS_CODE_ENTRY&lt;/Value&gt;
       &lt;/String&gt;
     &lt;/Attributes&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="USB_DEVICE_CDC_DESCRIPTOR_FS_FILE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_CDC_DESCRIPTOR_FS_FILE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="USB_DEVICE_VENDOR_DESCRIPTOR_FS_FILE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_VENDOR_DESCRIPTOR_FS_FILE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;String dnOrder=&quot;0&quot; id=&quot;name&quot;&gt;
         &lt;Value dnOrder=&quot;0&quot;&gt;usb_device_0.LIST_USB_DEVICE_FUNCTION_DESCRIPTOR_FS_ENTRY&lt;/Value&gt;
       &lt;/String&gt;
     &lt;/Attributes&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="USB_DEVICE_CDC_DESCRIPTOR_HS_FILE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_CDC_DESCRIPTOR_HS_FILE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="USB_DEVICE_VENDOR_DESCRIPTOR_HS_FILE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_VENDOR_DESCRIPTOR_HS_FILE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;String dnOrder=&quot;0&quot; id=&quot;name&quot;&gt;
         &lt;Value dnOrder=&quot;0&quot;&gt;usb_device_0.LIST_USB_DEVICE_FUNCTION_DESCRIPTOR_HS_ENTRY&lt;/Value&gt;
       &lt;/String&gt;
     &lt;/Attributes&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="USB_DEVICE_CDC_FUN_INIT_TABLE_FILE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_CDC_FUN_INIT_TABLE_FILE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="USB_DEVICE_VENDOR_FUN_INIT_FILE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_VENDOR_FUN_INIT_FILE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;String dnOrder=&quot;0&quot; id=&quot;name&quot;&gt;
         &lt;Value dnOrder=&quot;0&quot;&gt;usb_device_0.LIST_USB_DEVICE_FUNCTION_INIT_ENTRY&lt;/Value&gt;
       &lt;/String&gt;
     &lt;/Attributes&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_cdc_0" name="USB_DEVICE_CDC_FUN_REG_TABLE_FILE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_cdc_0&gt;
-  &lt;usb_device_cdc_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_CDC_FUN_REG_TABLE_FILE&quot;&gt;
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="USB_DEVICE_VENDOR_FUN_REG_TABLE_FILE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
+  &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;USB_DEVICE_VENDOR_FUN_REG_TABLE_FILE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;String dnOrder=&quot;0&quot; id=&quot;name&quot;&gt;
         &lt;Value dnOrder=&quot;0&quot;&gt;usb_device_0.LIST_USB_DEVICE_FUNCTION_ENTRY&lt;/Value&gt;
       &lt;/String&gt;
     &lt;/Attributes&gt;
-  &lt;/usb_device_cdc_0&gt;
-&lt;/usb_device_cdc_0&gt;
+  &lt;/usb_device_vendor_0&gt;
+&lt;/usb_device_vendor_0&gt;
 </value>
       </entry>
    </tokenMap>
@@ -10863,11 +10828,11 @@
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\configuration.h</file>
-         <hash>de61038355674182381e903e9c1a0bcd4a54dde5727aa6ff0c75d9c6d744ad73</hash>
+         <hash>d66b15c0944f8594065fd88496e38fb7c4f15bcf5b7aa23a9555bf645f6e1efc</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\definitions.h</file>
-         <hash>a7b58a997b05b84614aa6ae406a07ecc4a000bb316e74584d55739598b18b542</hash>
+         <hash>801779a768e4969f066e0fa0e7e9298f4b171084f0d262016215f7fdd1438d7f</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\device.h</file>
@@ -11134,16 +11099,8 @@
          <hash>25d4e1719a2948619c4f4b38406f896be37bbb74f4b8f631770ca32e1fe45b77</hash>
       </entry>
       <entry>
-         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\src\usb_device_cdc.c</file>
-         <hash>b97139f42ed16291e5325ae9a7948351f8be2ac4220b8c737892e063e1fc970f</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\src\usb_device_cdc_acm.c</file>
-         <hash>5dc1329306d46c91fbcfb2876f274e10346a2cbcf6b2352cbe2dff7f9759463c</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\src\usb_device_cdc_local.h</file>
-         <hash>b064eea84ddac7d6fc20c711ef1059da0de3e4a1e02d420d555deca4a44b1c6b</hash>
+         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\src\usb_device_endpoint_functions.c</file>
+         <hash>20bc21846f54d4c4a83f0cd598639422d32a91af3f27146a53bda1995c6db6f9</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\src\usb_device_function_driver.h</file>
@@ -11162,10 +11119,6 @@
          <hash>b12fd8f239e37735d34cbd777cd98b448b9ad8bc4fde516bf6ca8a5c1120163f</hash>
       </entry>
       <entry>
-         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\usb_cdc.h</file>
-         <hash>7156ab509a99e1532639ce0826dd8cde6c77581bbe07951e71ec17428deca6c3</hash>
-      </entry>
-      <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\usb_chapter_9.h</file>
          <hash>3d61e683d79bb62694e1133023063da31853e924dd3a2f27abda159876cd6b9e</hash>
       </entry>
@@ -11176,10 +11129,6 @@
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\usb_device.h</file>
          <hash>44c976f44c00f873133cd722cdd9565a87f5db68fa7d867ca9d1f717949aa81e</hash>
-      </entry>
-      <entry>
-         <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\usb_device_cdc.h</file>
-         <hash>cd7f2dee131b1ef8d3cd4bc65094c9e06668ecc6329af8bc26f3cc5844c5ce0b</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb\usb_host.h</file>
@@ -11199,7 +11148,7 @@
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\usb_device_init_data_0.c</file>
-         <hash>976c50846c56aba11ef034c0effbba8f8b36afbc137b564593eda9edd128a3b8</hash>
+         <hash>f00f364b4bdb51dfefe9ec9d45a209daf34bbe770e45aaa4ef3bd864ac0c8118</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\user.h</file>

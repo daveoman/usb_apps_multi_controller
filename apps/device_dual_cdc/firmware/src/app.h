@@ -115,6 +115,7 @@ typedef enum
 
 } APP_STATES;
 
+#if 0
 typedef struct 
 {
     USB_DEVICE_CDC_INDEX cdcInstance;
@@ -149,6 +150,7 @@ typedef struct
     /* Application CDC read buffer */
     uint8_t * readBuffer;
 } APP_COM_PORT_OBJECT;
+#endif
 
 typedef struct
 {
@@ -174,7 +176,7 @@ typedef struct
     
     unsigned int debounceCount;
     
-    APP_COM_PORT_OBJECT comObject; 
+    //APP_COM_PORT_OBJECT comObject; 
     
     unsigned int readBuffersize;
 } APP_USB_DEVICE_OBJECT;

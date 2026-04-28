@@ -132,7 +132,7 @@ extern "C" {
 /* Enable usage of Dual Bank */
 #define DRV_USBFSV1_DUAL_BANK_ENABLE                        false
 
-#define DRV_USBFSV1_ENDPOINTS_NUMBER                        3U
+#define DRV_USBFSV1_ENDPOINTS_NUMBER                        2U
 /* Alignment for buffers that are submitted to USB Driver*/ 
 #define USB_ALIGN  __ALIGNED(CACHE_LINE_SIZE)
 
@@ -148,14 +148,10 @@ extern "C" {
 #define USB_DEVICE_SOF_EVENT_ENABLE
 
 
-/* Maximum instances of CDC function driver */
-#define USB_DEVICE_CDC_INSTANCES_NUMBER                     1U
-
-
-/* CDC Transfer Queue Size for both read and
+/* Endpoint Transfer Queue Size for both read and
    write. Applicable to all instances of the
    function driver */
-#define USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED                 3U
+#define USB_DEVICE_ENDPOINT_QUEUE_DEPTH_COMBINED                 2
 
 
 

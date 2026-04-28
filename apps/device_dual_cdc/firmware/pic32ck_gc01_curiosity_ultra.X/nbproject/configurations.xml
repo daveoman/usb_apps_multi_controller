@@ -91,19 +91,16 @@
           <logicalFolder name="usb" displayName="usb" projectFiles="true">
             <logicalFolder name="src" displayName="src" projectFiles="true">
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_local.h</itemPath>
-              <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_cdc_local.h</itemPath>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_function_driver.h</itemPath>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_mapping.h</itemPath>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_external_dependencies.h</itemPath>
             </logicalFolder>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_host_client_driver.h</itemPath>
-            <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_device_cdc.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_chapter_9.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_host.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_common.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_host_hub_interface.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_hub.h</itemPath>
-            <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_cdc.h</itemPath>
             <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/usb_device.h</itemPath>
           </logicalFolder>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/user.h</itemPath>
@@ -339,9 +336,8 @@
           </logicalFolder>
           <logicalFolder name="usb" displayName="usb" projectFiles="true">
             <logicalFolder name="src" displayName="src" projectFiles="true">
-              <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_cdc_acm.c</itemPath>
-              <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_cdc.c</itemPath>
               <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device.c</itemPath>
+              <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/usb/src/usb_device_endpoint_functions.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/pic32ck_gc01_curiosity_ultra/libc_syscalls.c</itemPath>

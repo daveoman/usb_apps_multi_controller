@@ -60,8 +60,6 @@
 #include "usb/usb_device.h"
 #include "peripheral/rtc/plib_rtc.h"
 #include "system/time/sys_time.h"
-#include "usb/usb_device_cdc.h"
-#include "usb/usb_cdc.h"
 #include "bsp/bsp.h"
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_uart_definitions.h"
