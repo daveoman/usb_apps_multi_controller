@@ -106,115 +106,6 @@ APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 
-
-#if 0
-/*******************************************************
- * USB CDC Device Events - Application Event Handler
- *******************************************************/
-
-USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
-(
-    USB_DEVICE_CDC_INDEX index ,
-    USB_DEVICE_CDC_EVENT event ,
-    void * pData,
-    uintptr_t userData
-)
-{
-    APP_USB_DEVICE_OBJECT * appDataObject;
-    appDataObject = (APP_USB_DEVICE_OBJECT *)userData;
-    USB_CDC_CONTROL_LINE_STATE * controlLineStateData;
-    USB_DEVICE_CDC_EVENT_DATA_READ_COMPLETE * eventDataRead; 
-
-    switch ( event )
-    {
-        case USB_DEVICE_CDC_EVENT_GET_LINE_CODING:
-
-            /* This means the host wants to know the current line
-             * coding. This is a control transfer request. Use the
-             * USB_DEVICE_ControlSend() function to send the data to
-             * host.  */
-
-            USB_DEVICE_ControlSend(appDataObject->deviceHandle,
-                    &appDataObject->comObject.getLineCodingData, sizeof(USB_CDC_LINE_CODING));
-
-            break;
-
-        case USB_DEVICE_CDC_EVENT_SET_LINE_CODING:
-
-            /* This means the host wants to set the line coding.
-             * This is a control transfer request. Use the
-             * USB_DEVICE_ControlReceive() function to receive the
-             * data from the host */
-
-            USB_DEVICE_ControlReceive(appDataObject->deviceHandle,
-                    &appDataObject->comObject.setLineCodingData, sizeof(USB_CDC_LINE_CODING));
-
-            break;
-
-        case USB_DEVICE_CDC_EVENT_SET_CONTROL_LINE_STATE:
-
-            /* This means the host is setting the control line state.
-             * Read the control line state. We will accept this request
-             * for now. */
-
-            controlLineStateData = (USB_CDC_CONTROL_LINE_STATE *)pData;
-            appDataObject->comObject.controlLineStateData.dtr = controlLineStateData->dtr;
-            appDataObject->comObject.controlLineStateData.carrier = controlLineStateData->carrier;
-
-            USB_DEVICE_ControlStatus(appDataObject->deviceHandle, USB_DEVICE_CONTROL_STATUS_OK);
-
-            break;
-
-        case USB_DEVICE_CDC_EVENT_SEND_BREAK:
-
-            /* This means that the host is requesting that a break of the
-             * specified duration be sent. Read the break duration */
-
-            appDataObject->comObject.breakData = ((USB_DEVICE_CDC_EVENT_DATA_SEND_BREAK *)pData)->breakDuration;
-            
-            /* Complete the control transfer by sending a ZLP  */
-            USB_DEVICE_ControlStatus(appDataObject->deviceHandle, USB_DEVICE_CONTROL_STATUS_OK);
-            
-            break;
-
-        case USB_DEVICE_CDC_EVENT_READ_COMPLETE:
-
-            /* This means that the host has sent some data*/
-            eventDataRead = (USB_DEVICE_CDC_EVENT_DATA_READ_COMPLETE *)pData;
-            appDataObject->comObject.isReadComplete = true;
-            appDataObject->comObject.numBytesRead = eventDataRead->length;
-            break;
-
-        case USB_DEVICE_CDC_EVENT_CONTROL_TRANSFER_DATA_RECEIVED:
-
-            /* The data stage of the last control transfer is
-             * complete. For now we accept all the data */
-
-            USB_DEVICE_ControlStatus(appDataObject->deviceHandle, USB_DEVICE_CONTROL_STATUS_OK);
-            break;
-
-        case USB_DEVICE_CDC_EVENT_CONTROL_TRANSFER_DATA_SENT:
-
-            /* This means the GET LINE CODING function data is valid. We dont
-             * do much with this data in this demo. */
-            break;
-
-        case USB_DEVICE_CDC_EVENT_WRITE_COMPLETE:
-
-            /* This means that the data write got completed. We can schedule
-             * the next read. */
-
-            appDataObject->comObject.isWriteComplete = true;
-            break;
-
-        default:
-            break;
-    }
-
-    return USB_DEVICE_CDC_EVENT_RESPONSE_NONE;
-}
-#endif
-
 /***********************************************
  * Application USB Device Layer Event Handler.
  ***********************************************/
@@ -234,20 +125,9 @@ void APP_USBDeviceEventHandler ( USB_DEVICE_EVENT event, void * eventData, uintp
             appUsbDeviceObject->sofEventHasOccurred = true; 
             break;
 
-        case USB_DEVICE_EVENT_RESET:
-            
-#if 0
-            /* Update LED to show reset state */
-            if (appUsbDeviceObject->comObject.cdcInstance == 0)
-            {                   
+        case USB_DEVICE_EVENT_RESET:                 
                 /* Update LED to show configured state */
-                LED1_Off();
-            }
-            else 
-            {
-                LED2_Off();
-            }
-#endif
+            LED1_Off();
             appUsbDeviceObject->isConfigured = false; 
 
             break;
@@ -258,26 +138,9 @@ void APP_USBDeviceEventHandler ( USB_DEVICE_EVENT event, void * eventData, uintp
             configuredEventData = (USB_DEVICE_EVENT_DATA_CONFIGURED*)eventData;
             if ( configuredEventData->configurationValue == 1)
             {
-                /* Register the CDC Device application event handler here.
-                * Note how the appData object pointer is passed as the
-                * user data */
-
-//                USB_DEVICE_CDC_EventHandlerSet(appUsbDeviceObject->comObject.cdcInstance, APP_USBDeviceCDCEventHandler, (uintptr_t)appUsbDeviceObject);
-
                 /* Mark that the device is now configured */
                 appUsbDeviceObject->isConfigured = true;
-#if 0              
-                if (appUsbDeviceObject->comObject.cdcInstance == 0)
-                {                   
-                    /* Update LED to show configured state */
-                     LED1_On();       
-                }
-                else if (appUsbDeviceObject->comObject.cdcInstance == 1)
-                {
-                    /* Update LED to show configured state */
-                     LED2_On();
-                }
-#endif
+                LED1_On();
             }
             break;
 
@@ -291,17 +154,8 @@ void APP_USBDeviceEventHandler ( USB_DEVICE_EVENT event, void * eventData, uintp
 
             /* VBUS is not available any more. Detach the device. */
             USB_DEVICE_Detach(appUsbDeviceObject->deviceHandle);
-#if 0
-            if (appUsbDeviceObject->comObject.cdcInstance == 0)
-            {                   
-                /* Update LED to show configured state */
-                LED1_Off(  );
-            }
-            else 
-            {
-                LED2_Off(  ); 
-            }
-#endif
+            LED1_Off();
+            appUsbDeviceObject->isConfigured = false;
             break;
 
         case USB_DEVICE_EVENT_SUSPENDED:
@@ -327,15 +181,9 @@ void APP_ProcessSwitchPress(APP_USB_DEVICE_OBJECT* deviceObject)
     /* This function checks if the switch is pressed and then
      * debounces the switch press*/
     bool switchPressed;
-#if 0
-    if (deviceObject->comObject.cdcInstance == 0)
-    {
-        switchPressed = ( SWITCH_STATE_PRESSED == SWITCH_Get() ? true : false ) ;
-    }
-    else
-    {
-        switchPressed = ( SWITCH_STATE_PRESSED == SWITCH2_Get() ? true : false ) ;
-    }
+
+    switchPressed = ( SWITCH_STATE_PRESSED == SWITCH_Get() ? true : false ) ;
+
     if(switchPressed)
     {
         if(deviceObject->ignoreSwitchPress)
@@ -379,8 +227,8 @@ void APP_ProcessSwitchPress(APP_USB_DEVICE_OBJECT* deviceObject)
         deviceObject->switchDebounceTimer = 0;
         deviceObject->sofEventHasOccurred = false;
     }
-#endif
 }
+
 /*****************************************************
  * This function is called in every step of the
  * application state machine.
@@ -396,10 +244,6 @@ bool APP_StateReset(APP_USB_DEVICE_OBJECT* deviceObject)
     if(deviceObject->isConfigured == false)
     {
         deviceObject->state = APP_STATE_WAIT_FOR_CONFIGURATION;
-        //deviceObject->comObject.readTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-        //deviceObject->comObject.writeTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-        //deviceObject->comObject.isReadComplete = true;
-        //deviceObject->comObject.isWriteComplete = true;
         retVal = true;
     }
     else
@@ -415,47 +259,25 @@ bool APP_StateReset(APP_USB_DEVICE_OBJECT* deviceObject)
 // Section: Application Initialization and State Machine Functions
 // *****************************************************************************
 // *****************************************************************************
-void __InitializeDeviceObject(uint8_t index)
+void __InitializeDeviceObject(void)
 {
     /* Device Layer Handle  */
-    appData.deviceObject[index].deviceHandle = USB_DEVICE_HANDLE_INVALID ;
+    appData.deviceObject.deviceHandle = USB_DEVICE_HANDLE_INVALID ;
 
     /* Device configured status */
-    appData.deviceObject[index].isConfigured = false;
-#if 0
-    appData.deviceObject[index].comObject.cdcInstance = index; 
-    /* Initial get line coding state */
-    appData.deviceObject[index].comObject.getLineCodingData.dwDTERate = 9600;
-    appData.deviceObject[index].comObject.getLineCodingData.bParityType =  0;
-    appData.deviceObject[index].comObject.getLineCodingData.bCharFormat = 0;
-    appData.deviceObject[index].comObject.getLineCodingData.bDataBits = 8;
+    appData.deviceObject.isConfigured = false;
 
-    /* Read Transfer Handle */
-    appData.deviceObject[index].comObject.readTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-
-    /* Write Transfer Handle */
-    appData.deviceObject[index].comObject.writeTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-
-    /* Intialize the read complete flag */
-    appData.deviceObject[index].comObject.isReadComplete = true;
-
-    /*Initialize the write complete flag*/
-    appData.deviceObject[index].comObject.isWriteComplete = true;
-#endif
     /* Initialize Ignore switch flag */
-    appData.deviceObject[index].ignoreSwitchPress = false;
+    appData.deviceObject.ignoreSwitchPress = false;
 
     /* Reset the switch debounce counter */
-    appData.deviceObject[index].switchDebounceTimer = 0;
+    appData.deviceObject.switchDebounceTimer = 0;
 
     /* Reset other flags */
-    appData.deviceObject[index].sofEventHasOccurred = false;
-    appData.deviceObject[index].isSwitchPressed = false;
-
-    /* Set up the read buffer */
-    //appData.deviceObject[index].comObject.readBuffer = &readBuffer[index][0];
+    appData.deviceObject.sofEventHasOccurred = false;
+    appData.deviceObject.isSwitchPressed = false;
     
-    USBAPP_LOG_INFO("Init instance %d", index);
+    USBAPP_LOG_INFO("Init object complete");
 }
 /*******************************************************************************
   Function:
@@ -470,8 +292,7 @@ void APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
     
-    __InitializeDeviceObject(0); 
-    //__InitializeDeviceObject(1);      
+    __InitializeDeviceObject(); 
 }
 
 
@@ -494,29 +315,17 @@ void APP_Tasks (void )
         case APP_STATE_INIT:
 
             /* Open the device layer */
-            if(appData.deviceObject[0].deviceHandle == USB_DEVICE_HANDLE_INVALID)
+            if(appData.deviceObject.deviceHandle == USB_DEVICE_HANDLE_INVALID)
             {
-                appData.deviceObject[0].deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_0, DRV_IO_INTENT_READWRITE );
+                appData.deviceObject.deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_0, DRV_IO_INTENT_READWRITE );
             }
-            //if(appData.deviceObject[1].deviceHandle == USB_DEVICE_HANDLE_INVALID)
-            //{
-		//		appData.deviceObject[1].deviceHandle = USB_DEVICE_Open( USB_DEVICE_INDEX_1, DRV_IO_INTENT_READWRITE );
-            //}
             
-           if((appData.deviceObject[0].deviceHandle != USB_DEVICE_HANDLE_INVALID)) 
-                //&& 
-                  //  (appData.deviceObject[1].deviceHandle != USB_DEVICE_HANDLE_INVALID))
+           if((appData.deviceObject.deviceHandle != USB_DEVICE_HANDLE_INVALID))
             {
-                /* Register a callback with device layer to get event notification (for end point 0) */
-                USB_DEVICE_EventHandlerSet(appData.deviceObject[0].deviceHandle, APP_USBDeviceEventHandler, (uintptr_t)&appData.deviceObject[0]);
-                
-                /* Register a callback with device layer to get event notification (for end point 0) */
-                //USB_DEVICE_EventHandlerSet(appData.deviceObject[1].deviceHandle, APP_USBDeviceEventHandler,(uintptr_t)&appData.deviceObject[1]);
-                
+                USB_DEVICE_EventHandlerSet(appData.deviceObject.deviceHandle, APP_USBDeviceEventHandler, (uintptr_t)&appData.deviceObject);
                
                 appData.state = APP_STATE_RUN; 
-                appData.deviceObject[0].state = APP_STATE_WAIT_FOR_CONFIGURATION;
-                //appData.deviceObject[1].state = APP_STATE_WAIT_FOR_CONFIGURATION;
+                appData.deviceObject.state = APP_STATE_WAIT_FOR_CONFIGURATION;
                 USBAPP_LOG_INFO("Handles acquired moving to config wait");
                 
             }
@@ -528,9 +337,7 @@ void APP_Tasks (void )
 
             break;
         case APP_STATE_RUN:
-             
-             _AppTaskUsbDevice(&appData.deviceObject[0]);
-             //_AppTaskUsbDevice(&appData.deviceObject[1]);
+             _AppTaskUsbDevice(&appData.deviceObject);
             break; 
         case APP_STATE_ERROR:
             break;
@@ -573,23 +380,6 @@ void _AppTaskUsbDevice(APP_USB_DEVICE_OBJECT* deviceObject)
              * else wait for the current read to complete */
 
             deviceObject->state = APP_STATE_WAIT_FOR_READ_COMPLETE;
-#if 0
-            if(deviceObject->comObject.isReadComplete == true)
-            {
-                deviceObject->comObject.isReadComplete = false;
-                deviceObject->comObject.readTransferHandle =  USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-
-                USB_DEVICE_CDC_Read (deviceObject->comObject.cdcInstance,
-                        &deviceObject->comObject.readTransferHandle, deviceObject->comObject.readBuffer,
-                        deviceObject->readBuffersize);
-                
-                if(deviceObject->comObject.readTransferHandle == USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID)
-                {
-                    deviceObject->state = APP_STATE_ERROR;
-                    break;
-                }
-            }
-#endif
             break;
 
         case APP_STATE_WAIT_FOR_READ_COMPLETE:
@@ -601,15 +391,6 @@ void _AppTaskUsbDevice(APP_USB_DEVICE_OBJECT* deviceObject)
             }
 
             APP_ProcessSwitchPress(deviceObject);
-
-            /* Check if a character was received or a switch was pressed.
-             * The isReadComplete flag gets updated in the CDC event handler. */
-#if 0
-            if(deviceObject->comObject.isReadComplete || deviceObject->isSwitchPressed)
-            {
-                deviceObject->state = APP_STATE_SCHEDULE_WRITE;
-            }
-#endif
             break;
 
         
@@ -622,40 +403,15 @@ void _AppTaskUsbDevice(APP_USB_DEVICE_OBJECT* deviceObject)
 
             /* Setup the write */
 
-#if 0
-            deviceObject->comObject.writeTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
-            deviceObject->comObject.isWriteComplete = false;
-#endif
             deviceObject->state = APP_STATE_WAIT_FOR_WRITE_COMPLETE;
 
             if(deviceObject->isSwitchPressed)
             {
                 /* If the switch was pressed, then send the switch prompt*/
                 deviceObject->isSwitchPressed = false;
-#if 0
-                USB_DEVICE_CDC_Write(deviceObject->comObject.cdcInstance,
-                        &deviceObject->comObject.writeTransferHandle, switchPromptUSB, sizeof(switchPromptUSB),
-                        USB_DEVICE_CDC_TRANSFER_FLAGS_DATA_COMPLETE);
-#endif
             }
             else
             {
-#if 0
-                /* Else echo each received character by adding 1 */
-                for(i=0; i<deviceObject->comObject.numBytesRead; i++)
-                {
-                    if((deviceObject->comObject.readBuffer[i] != 0x0A) 
-                            && (deviceObject->comObject.readBuffer[i] != 0x0D))
-                    {
-                        deviceObject->comObject.readBuffer[i] = deviceObject->comObject.readBuffer[i] + 1;
-                    }
-                }
-                USB_DEVICE_CDC_Write(deviceObject->comObject.cdcInstance,
-                        &deviceObject->comObject.writeTransferHandle,
-                        deviceObject->comObject.readBuffer, 
-                        deviceObject->comObject.numBytesRead,
-                        USB_DEVICE_CDC_TRANSFER_FLAGS_DATA_COMPLETE);
-#endif
             }
 
             break;
@@ -667,14 +423,6 @@ void _AppTaskUsbDevice(APP_USB_DEVICE_OBJECT* deviceObject)
                 break;
             }
 
-            /* Check if a character was sent. The isWriteComplete
-             * flag gets updated in the CDC event handler */
-#if 0
-            if(deviceObject->comObject.isWriteComplete == true)
-            {
-                deviceObject->state = APP_STATE_SCHEDULE_READ;
-            }
-#endif
             break;
 
         case APP_STATE_ERROR:

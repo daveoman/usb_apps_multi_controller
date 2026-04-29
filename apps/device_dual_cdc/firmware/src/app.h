@@ -115,43 +115,6 @@ typedef enum
 
 } APP_STATES;
 
-#if 0
-typedef struct 
-{
-    USB_DEVICE_CDC_INDEX cdcInstance;
-
-    /* Set Line Coding Data */
-    USB_CDC_LINE_CODING setLineCodingData;
-
-    /* Get Line Coding Data */
-    USB_CDC_LINE_CODING getLineCodingData;
-
-    /* Control Line State */
-    USB_CDC_CONTROL_LINE_STATE controlLineStateData;
-
-    /* Break data */
-    uint16_t breakData;
-
-    /* Read transfer handle */
-    USB_DEVICE_CDC_TRANSFER_HANDLE readTransferHandle;
-
-    /* Write transfer handle */
-    USB_DEVICE_CDC_TRANSFER_HANDLE writeTransferHandle;
-
-    /* True if a character was read */
-    bool isReadComplete;
-
-    /* True if a character was written*/
-    bool isWriteComplete;
-
-    /* Number of bytes read from Host */ 
-    uint32_t numBytesRead; 
-    
-    /* Application CDC read buffer */
-    uint8_t * readBuffer;
-} APP_COM_PORT_OBJECT;
-#endif
-
 typedef struct
 {
     APP_STATES state;
@@ -176,8 +139,6 @@ typedef struct
     
     unsigned int debounceCount;
     
-    //APP_COM_PORT_OBJECT comObject; 
-    
     unsigned int readBuffersize;
 } APP_USB_DEVICE_OBJECT;
 // *****************************************************************************
@@ -198,7 +159,7 @@ typedef struct
     /* Application's current state*/
     APP_STATES state;
 
-    APP_USB_DEVICE_OBJECT deviceObject[2];
+    APP_USB_DEVICE_OBJECT deviceObject;
     
 } APP_DATA;
 
