@@ -843,8 +843,7 @@ void USBAPP2_DeviceEventHandler(
 {
     USBAPP2_DATA *usb = (USBAPP2_DATA *)context;
 
-    //if (event != USB_DEVICE_EVENT_SOF) {
-    if (event == USB_DEVICE_EVENT_ENDPOINT_WRITE_COMPLETE) {
+    if (event != USB_DEVICE_EVENT_SOF) {
         USBAPP2_LOG_INFO("Event %d (%s)", (int) event, USBAPP2_DeviceEventName(event));
     }
     
@@ -862,7 +861,7 @@ void USBAPP2_DeviceEventHandler(
             // attached to the USB. The application can now call
             // USB_DEVICE_Attach() function to enable D+/D- pull up
             // resistors. 
-           USB_DEVICE_Attach(usb->devHandle);            
+            //USB_DEVICE_Attach(usb->devHandle);            
             
             usb->evt.powerDetected = true;
             usb->diag.cntPowerDetected++;
@@ -1173,8 +1172,8 @@ static bool USBAPP2_Attach(USBAPP2_DATA *usb)
 
     USBAPP2_LOG_INFO("attaching device");
     usb->status.attached = true;    
-    //USB_DEVICE_Attach(usb->devHandle);
-    //usb->status.attached = true;
+    USB_DEVICE_Attach(usb->devHandle);
+    usb->status.attached = true;
     return true;
 }
 
@@ -1188,7 +1187,7 @@ static bool USBAPP2_Detach(USBAPP2_DATA *usb)
     }
 
     USBAPP2_LOG_INFO("detaching device");
-    //USB_DEVICE_Detach(usb->devHandle);
+    USB_DEVICE_Detach(usb->devHandle);
     usb->status.attached = false;
     return true;
 }
@@ -1591,7 +1590,7 @@ void USBAPP2_Tasks(void)
 
                 usb->status.opened = true;
                 USBAPP2_LOG_INFO("USB_DEVICE_Open success");
-                USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_CONFIGURATION);
+                USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_POWER);
             }
             else
             {
@@ -1616,16 +1615,15 @@ void USBAPP2_Tasks(void)
             (void)USBAPP2_Attach(usb);
             USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_CONFIGURATION);
 #endif
-#if 1
             if (usb->evt.powerDetected)
             {
                 usb->evt.powerDetected = false;
                 usb->status.powered = true;
 
                 USBAPP2_LOG_INFO("event: power detected");
-                USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_CONFIGURATION);
-                (void)USBAPP2_Attach(usb);
                 //USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_CONFIGURATION);
+                (void)USBAPP2_Attach(usb);
+                USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_CONFIGURATION);
             }
 
             if (usb->evt.powerRemoved)
@@ -1643,7 +1641,7 @@ void USBAPP2_Tasks(void)
                 USBAPP2_LOG_ERR("event: bus/device error while waiting for power");
                 USBAPP2_SetState(usb, USBAPP2_STATE_ERROR_RECOVERY);
             }
-#endif
+            
             break;
         }
 
@@ -1655,11 +1653,9 @@ void USBAPP2_Tasks(void)
                 usb->evt.powerRemoved = false;
 
                 USBAPP2_LOG_INFO("event: power removed");
-#if 0
                 usb->status.powered = false;
                 (void)USBAPP2_Detach(usb);
                 USBAPP2_ResetRuntimeState(usb);
-#endif
                 USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_POWER);
                 break;
             }
@@ -1747,7 +1743,7 @@ void USBAPP2_Tasks(void)
                 }
             }            
 
-            /* This shouldn't happen either, but keep for debug */
+            /* Host will send this when it starts back up after an idle (suspended) */
             if (usb->evt.resumed)
             {
                 usb->evt.resumed = false;
@@ -1774,7 +1770,7 @@ void USBAPP2_Tasks(void)
 
                 USBAPP2_LOG_INFO("event: power removed");
                 usb->status.powered = false;
-                //(void)USBAPP2_Detach(usb);
+                (void)USBAPP2_Detach(usb);
                 USBAPP2_ResetRuntimeState(usb);
                 USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_POWER);
                 break;
@@ -1909,7 +1905,7 @@ void USBAPP2_Tasks(void)
                 usb->status.powered = false;
                 usb->status.suspended = false;
 
-                //(void)USBAPP2_Detach(usb);
+                (void)USBAPP2_Detach(usb);
                 USBAPP2_ResetRuntimeState(usb);
                 USBAPP2_SetState(usb, USBAPP2_STATE_WAIT_FOR_POWER);
                 break;
