@@ -10716,7 +10716,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
   &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_READ_Q_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/usb_device_vendor_0&gt;
 &lt;/usb_device_vendor_0&gt;
 </value>
@@ -10725,7 +10727,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="usb_device_vendor_0" name="CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;usb_device_vendor_0&gt;
   &lt;usb_device_vendor_0 dnOrder=&quot;0&quot; id=&quot;CONFIG_USB_DEVICE_FUNCTION_WRITE_Q_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/usb_device_vendor_0&gt;
 &lt;/usb_device_vendor_0&gt;
 </value>
@@ -10832,7 +10836,7 @@
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\definitions.h</file>
-         <hash>801779a768e4969f066e0fa0e7e9298f4b171084f0d262016215f7fdd1438d7f</hash>
+         <hash>ef0a84e66ce717deb72eb78710f515bdf6b67677b26678a929fc38f1964a5311</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\device.h</file>
@@ -10888,7 +10892,7 @@
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\initialization.c</file>
-         <hash>44a915a134eb05234a225062917222d060a0e7e8c4999a53f60fa63c24e62418</hash>
+         <hash>2577b56adfa75df2220864fecaa35388e14b701bc3ce4a89957338fea24c5dd3</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32ck_gc01_curiosity_ultra\interrupts.c</file>

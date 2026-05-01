@@ -1,3 +1,4 @@
+#if 0
 /*******************************************************************************
   MPLAB Harmony Application Header File
 
@@ -254,6 +255,301 @@ void _AppTaskUsbDevice(APP_USB_DEVICE_OBJECT* deviceObject);
 #endif
 //DOM-IGNORE-END
 
+/*******************************************************************************
+ End of File
+ */
+
+#endif
+
+/*******************************************************************************
+  MPLAB Harmony Application Header File
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    usb_app.h
+
+  Summary:
+    This header file provides prototypes and definitions for the application.
+
+  Description:
+    This header file provides function prototypes and data type definitions for
+    the application.  Some of these are required by the system (such as the
+    "APP_Initialize" and "APP_Tasks" prototypes) and some of them are only used
+    internally by the application (such as the "APP_STATES" definition).  Both
+    are defined here for convenience.
+*******************************************************************************/
+
+#ifndef _USB_APP_H
+#define _USB_APP_H
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdlib.h>
+//#include "txbp_device.h"
+#include "configuration.h"
+#include "definitions.h"
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Type Definitions
+// *****************************************************************************
+// *****************************************************************************
+
+/* --------------------------------------------------------------------------
+ * Endpoint / buffer configuration
+ * -------------------------------------------------------------------------- */
+
+#define USBAPP2_EP_BULK_OUT         0x01u
+#define USBAPP2_EP_BULK_IN          0x01u    /* Note, direction set during init */
+
+/* Maxes support full or high for fun */
+//#define USBAPP2_BULK_MPS            64u      /* Full speed only (512 for high speed) */
+#define USBAPP2_RX_BUF_SIZE         512u
+#define USBAPP2_TX_BUF_SIZE         512u
+#define USBAPP2_CTRL_BUF_SIZE       128u
+
+/* --------------------------------------------------------------------------
+ * Application state
+ * -------------------------------------------------------------------------- */
+
+typedef enum
+{
+    USBAPP2_STATE_STARTUP = 0,
+    USBAPP2_STATE_INIT,
+    USBAPP2_STATE_WAIT_FOR_POWER,
+    USBAPP2_STATE_WAIT_FOR_CONFIGURATION,
+    USBAPP2_STATE_READY,
+    USBAPP2_STATE_SUSPENDED,
+    USBAPP2_STATE_ERROR_RECOVERY
+} USBAPP2_STATE;
+
+typedef enum
+{
+    USBAPP2_CTRL_IDLE = 0,
+    USBAPP2_CTRL_WAIT_DATA,
+    USBAPP2_CTRL_WAIT_STATUS,
+    USBAPP2_CTRL_ERROR
+} USBAPP2_CTRL_STATE;
+
+typedef enum
+{
+    USBAPP2_PROTO_OK = 0,
+    USBAPP2_PROTO_ERR_BAD_LEN,
+    USBAPP2_PROTO_ERR_BAD_OPCODE,
+    USBAPP2_PROTO_ERR_BAD_CRC,
+    USBAPP2_PROTO_ERR_BUSY,
+    USBAPP2_PROTO_ERR_INTERNAL
+} USBAPP2_PROTO_ERR;
+
+/* --------------------------------------------------------------------------
+ * Diagnostics
+ * -------------------------------------------------------------------------- */
+
+typedef struct
+{
+    uint32_t cntPowerDetected;
+    uint32_t cntPowerRemoved;
+    uint32_t cntReset;
+    uint32_t cntConfigured;
+    uint32_t cntDeconfigured;
+    uint32_t cntSuspended;
+    uint32_t cntResumed;
+    uint32_t cntBusError;
+
+    uint32_t cntCtrlSetup;
+    uint32_t cntCtrlDataRx;
+    uint32_t cntCtrlDataTx;
+    uint32_t cntCtrlAbort;
+
+    uint32_t cntRxComplete;
+    uint32_t cntTxComplete;
+
+    uint32_t cntProtoOk;
+    uint32_t cntProtoErr;
+
+    uint32_t cntRecoveries;
+} USBAPP2_DIAG;
+
+/* --------------------------------------------------------------------------
+ * Latched event flags from the USB callback
+ * -------------------------------------------------------------------------- */
+
+typedef struct
+{
+    volatile bool powerDetected;
+    volatile bool powerRemoved;
+    volatile bool reset;
+    volatile bool configured;
+    volatile bool deconfigured;
+    volatile bool suspended;
+    volatile bool resumed;
+    volatile bool error;
+
+    volatile bool ctrlSetup;
+    volatile bool ctrlDataReceived;
+    volatile bool ctrlDataSent;
+    volatile bool ctrlAborted;
+
+    volatile bool bulkReadComplete;
+    volatile bool bulkWriteComplete;
+} USBAPP2_EVENTS;
+
+/* --------------------------------------------------------------------------
+ * Persistent USB status
+ * -------------------------------------------------------------------------- */
+
+typedef struct
+{
+    bool opened;
+    bool attached;
+    bool powered;
+    bool configured;
+    bool suspended;
+} USBAPP2_STATUS;
+
+/* --------------------------------------------------------------------------
+ * Main USB app object
+ * -------------------------------------------------------------------------- */
+
+typedef struct
+{
+    USB_DEVICE_HANDLE devHandle;
+
+    USBAPP2_STATE state;
+    USBAPP2_CTRL_STATE ctrlState;
+
+    USBAPP2_STATUS status;
+    USBAPP2_EVENTS evt;
+    USBAPP2_DIAG diag;
+
+    USB_DEVICE_TRANSFER_HANDLE rxTransferHandle;
+    USB_DEVICE_TRANSFER_HANDLE txTransferHandle;
+
+    bool rxPending;
+    bool txPending;
+    bool rxArmed;
+    
+    uint8_t configValue;    /* Only 1 configuration, but track anyway */
+    USB_SPEED speed;        /* Track even though we only support full */
+    uint8_t altSetting;     /* Only 1 setting, but track anyway */
+    
+    /* Hardcoded, but still configurable ;-) */
+    USB_ENDPOINT_ADDRESS endpointTx;
+    USB_ENDPOINT_ADDRESS endpointRx;
+
+    bool protocolPacketReady;
+    bool protocolResponseReady;
+
+    size_t rxCount;
+    size_t txCount;
+
+    /* The endpoint size is 64 for FS and 512 for HS */
+    uint16_t endpointMaxPktSize;    
+    uint8_t rxBuf[USBAPP2_RX_BUF_SIZE] CACHE_ALIGN;
+    uint8_t txBuf[USBAPP2_TX_BUF_SIZE] CACHE_ALIGN;
+    uint8_t ctrlBuf[USBAPP2_CTRL_BUF_SIZE];
+    
+    USB_SETUP_PACKET ctrlSetupPkt;
+    size_t ctrlExpectedLength;
+    size_t ctrlActualLength;
+
+    USB_DEVICE_RESULT lastReadResult;
+    USB_DEVICE_RESULT lastWriteResult;
+
+    USBAPP2_PROTO_ERR lastProtoErr;
+    
+    //txbp_ctx_t txbp;
+    
+} USBAPP2_DATA;
+
+extern USBAPP2_DATA g_usbApp2;
+
+
+// *****************************************************************************
+/* Application Data
+
+  Summary:
+    Holds application data
+
+  Description:
+    This structure holds the application's data.
+
+  Remarks:
+    Application strings and buffers are be defined outside this structure.
+ */
+
+#if 0
+typedef struct
+{
+   /* Device layer handle returned by device layer open function */
+    USB_DEVICE_HANDLE usbDevHandle;
+
+    /* Application state*/
+    USBAPP2_STATES state;
+
+    /* Track device configuration */
+    bool deviceIsConfigured;
+
+    /* Configuration value */
+    uint8_t configValue;
+
+    /* speed */
+    USB_SPEED speed;
+
+    /* ep data sent */
+    bool epDataWritePending;
+
+    /* ep data received */
+    bool epDataReadPending;
+
+    /* Transfer handle */
+    USB_DEVICE_TRANSFER_HANDLE writeTranferHandle;
+
+    /* Transfer handle */
+    USB_DEVICE_TRANSFER_HANDLE readTranferHandle;
+
+    /* The transmit endpoint address */
+    USB_ENDPOINT_ADDRESS endpointTx;
+
+    /* The receive endpoint address */
+    USB_ENDPOINT_ADDRESS endpointRx;
+
+    /* Tracks the alternate setting */
+    uint8_t altSetting;
+
+    /* Flag determines SOF event occurrence */
+    bool sofEventHasOccurred;
+
+    /* The endpoint size is 64 for FS and 512 for HS */
+    uint16_t endpointMaxPktSize;
+    
+    /* How much just came in? */
+    uint16_t receivedDataCount;
+    
+    /* Something is ready to be read */
+    bool rxChunkReady;
+
+    /* Our USB packet buffers and stats */
+    txbp_ctx_t txbp;
+    
+} USBAPP2_DATA;
+
+#endif
+
+void USBAPP2_Initialize ( void );
+void USBAPP2_Tasks ( void );
+
+#endif /* _USB_APP_H */
 /*******************************************************************************
  End of File
  */

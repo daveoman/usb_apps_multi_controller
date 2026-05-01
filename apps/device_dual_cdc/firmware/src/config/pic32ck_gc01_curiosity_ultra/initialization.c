@@ -558,7 +558,8 @@ void SYS_Initialize ( void* data )
 
 
     /* MISRAC 2012 deviation block end */
-    APP_Initialize();
+    //APP_Initialize();
+    USBAPP2_Initialize();
 
 
     NVIC_Initialize();
